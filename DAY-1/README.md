@@ -1,7 +1,7 @@
-문제 1 
+문제 1
 SQL이란 무엇이며, 어떤 용도로 사용되나요?
 
-// SQL이란? 
+// SQL이란?
 Structured Query Language약자 데이터베이스와 상호작용하기 위한 프로그래밍 언어로 데이터베이스의(RDBMS) 데이터를 테이블 형태로 저장시켜주며 테이블간의 관계를 정의하여 일관성과 무결성을 유지해줍니다.
 
 // 용도
@@ -28,10 +28,12 @@ SQL과 NoSQL 데이터베이스의 주요 차이점 두 가지를 설명하세�
 쿼리 언어 : SQL을 사용하여 데이터 조회및 조작을 수행합니다.
 
 // 장점
+
 - 데이터 일관성 유지
 - 복잡한 쿼리 수행
 
 // 단점
+
 - 수평 확장 어려움
 - 스키마 변경 어려움
 
@@ -40,12 +42,15 @@ SQL과 NoSQL 데이터베이스의 주요 차이점 두 가지를 설명하세�
 쿼리 언어 : SQL과 같은 표준화된 언어가 없으며, 데이터베이스에 따라 다른 API나 쿼리언어를 사용합니다
 
 // 장점
+
 - 수평 확장에 용이
 - 데이터 구조변경에 유연
 
 // 단점
+
 - 데이터 일관성 보장이 어려움
 - 복잡한 쿼리기능이 제한적
+
 
 
 
@@ -66,7 +71,7 @@ SQL과 NoSQL 데이터베이스의 주요 차이점 두 가지를 설명하세�
 
 
 문제 5
-SELECT 문에서 모든 컬럼을 조회하기 위한 와일드카드는 무엇인가요? 
+SELECT 문에서 모든 컬럼을 조회하기 위한 와일드카드는 무엇인가요?
 
 // 정답 *
 
@@ -104,13 +109,14 @@ AND, OR, NOT 연산자의 기능을 간단히 설명하세요.
 SELECT * FROM students WHERE name LIKE '김%';
 
 //SELECT * 모든 컬럼을 조회
-FROM students 로 부터 
+FROM students 로 부터
 WHERE name 에 조건을 지정할 것이며
 LIKE '김%'는 김으로 시작하는 모든 문자열을 찾습니다.
 
-번외) 
+번외
 '%김%' '김'이 포함된 모든 문자열
 '김_박' '김' 다음에 '박'으로 끝나는 문자열
+
 
 
 
@@ -118,8 +124,8 @@ LIKE '김%'는 김으로 시작하는 모든 문자열을 찾습니다.
 문제 9
 범위를 지정하여 데이터를 조회할 때 사용하는 연산자는 무엇인가요? 예시와 함께 설명하세요.
 
-//SELECT * FROM students WHERE age BETWEEN 17 AND 19;
-SELECT * 모든 컬럼 조회
+//SELECT _ FROM students WHERE age BETWEEN 17 AND 19;
+SELECT _ 모든 컬럼 조회
 FROM students 로 부터
 WHERE age 여기에 조건부를 넣을것이며
 BETWEEN 17 AND 19 17 ~ 19까지의 조건을 만족하는 값을 찾을거야
@@ -140,6 +146,7 @@ INSERT 문을 사용하여 여러 행을 한 번에 삽입하는 방법을 예�
 
 
 
+
 문제 11
 UPDATE 문을 사용하여 특정 조건의 데이터를 수정할 때 주의해야 할 점은 무엇인가요?
 
@@ -148,7 +155,8 @@ UPDATE 문을 사용하여 특정 조건의 데이터를 수정할 때 주의해
 
 
 
-문제 12
+
+<!-- 문제 12 찾아서 써봤습니다
 DELETE 문과 TRUNCATE 문의 차이점을 설명하세요.
 
 // DELETE
@@ -159,7 +167,7 @@ DELETE 문과 TRUNCATE 문의 차이점을 설명하세요.
 // TRUNCATE
 - 테이블의 모든 데이터 삭제
 - WHERE 사용 불가능, 조건없이 전체 데이터 삭제
-- 삭제된 데이터 롤백 불가능
+- 삭제된 데이터 롤백 불가능 -->
 
 
 
@@ -168,12 +176,13 @@ DELETE 문과 TRUNCATE 문의 차이점을 설명하세요.
 문제 13
 GROUP BY 절의 기능과 함께 집계 함수를 사용하는 예시를 보여주세요.
 
-// SELECT grade, COUNT(*) AS '학생 수' FROM students GROUP BY grade;
+// SELECT grade, COUNT(_) AS '학생 수' FROM students GROUP BY grade;
 SELECT grade 를 참조
-COUNT(*) COUNT의 모든 행을
+COUNT(_) COUNT의 모든 행을
 AS '학생 수' 별칭을 이용해 '학생 수'로 변경
 FROM students로 부터
-GROUP BY grade; grade(등급)값에 따라 학생 수를 그룹화 할겁니다
+GROUP BY grade; grade(등급)값에 따라 학생 수를 그룹화 합니다.
+
 
 
 
@@ -207,19 +216,20 @@ INNER JOIN과 LEFT JOIN의 차이점을 설명하세요.
 윈도우 함수(Window Function)의 목적과 예시를 설명하세요.
 
 // 목적
+
 - 행의 데이터와 주변의 다른 행의 데이터를 비교하고 분석
 - 누적 합계, 평균, 순위 등을 계산하여 분석에 용이하게 함
 - 서브쿼리 없이 집계 결과를 쉽게 조회 가능
 
 // 예시
-SELECT 
-    id,
-    score,
-    RANK()                순위를 계산
-    OVER                  윈도우 함수가 적용될 범위
-    (ORDER BY score DESC) score를 오름차순으로 정렬
-    AS '순위'             정렬하고 '순위'로 반환
-FROM students;            로 부터
+SELECT
+id,
+score,
+RANK() 순위를 계산
+OVER 윈도우 함수가 적용될 범위
+(ORDER BY score DESC) score를 오름차순으로 정렬
+AS '순위' 정렬하고 '순위'로 반환
+FROM students; 로 부터
 
 
 
@@ -230,13 +240,16 @@ FROM students;            로 부터
 
 // PRIMARY KEY
 각 행을 고유하게 식별하는데 사용, 각 테이블은 하나의 기본 키만 가질수 있습니다.
+
 - 기본 키는 각 행의 고유성을 보장, 기본 키의 값은 테이블내 중복 불가능
 - 기본 키는 NULL값을 가질수 없음
 
 // FOREIGN KEY
 다른 테이블의 기본 키를 참조하는 관계
+
 - 두 테이블간의 관계를 정의해 데이터 무결성을 유지
 - 기본 키에 존재하는 값만 가질 수 있음
+
 
 
 
@@ -246,19 +259,24 @@ FROM students;            로 부터
 
 // Transaction란?
 데이터베이스의 상태를 변화시키기 위해 수행하는 논리적 단위
+ACID의 속성을 가짐
 
 // 특징
 
-원자성
+원자성 Atomicity
+
 - 작업이 부분적으로 실행되거나 중단되지 않는 것을 보장
 
-일관성
+일관성 Consistency
+
 - 작업 처리 결과는 항상 일관성이 있어야 한다
 
-격리성
+격리성 Isolation
+
 - 트랜잭션 수행 중 다른 트랜잭션의 작업이 끼어들지 못하도록 보장한다
 
-지속성
+지속성 Durability
+
 - 성공적으로 수행된 트랜잭션의 결과는 영구적으로 저장된다
 
 
@@ -272,9 +290,11 @@ FROM students;            로 부터
 CREATE USER 'username'@'localhost' IDENTIFIED BY 'password';
 
 // 특정 권한 부여
-GRANT SELECT, INSERT        부여할 권한 목록(조회, 삽입)
-ON database.*               권한이 적용될 데이터베이스를 지정 *는 모두
-TO 'username'@'localhost';  권한을 부여할 사용자 계정
+GRANT SELECT, INSERT 부여할 권한 목록(조회, 삽입)
+ON database.* 권한이 적용될 데이터베이스를 지정 *는 모두
+TO 'username'@'localhost'; 권한을 부여할 사용자 계정
+
+
 
 
 
@@ -282,12 +302,14 @@ TO 'username'@'localhost';  권한을 부여할 사용자 계정
 SQL에서 데이터베이스의 성능을 향상시키기 위해 인덱스를 사용하는데, 인덱스의 장점과 단점을 각각 설명하세요.
 
 // 장점
+
 - 검색 속도 향상. 특정 컬럼에 대한 검색을 빠르게 도와줌
 - 정렬 성능 개선. ORDER BY절 을 사용하면 빠른 정렬이 가능
 - JOIN 성능 향상. 두개 이상 테이블 JOIN할 떄 인덱스가 있는 컬럼을 사용하면 JOIN 성능이 향상됨
 
 // 단점
+
 - 추가 저장 공간 소요. 인덱스를 생성하면 데이터베이스의 크기가 증가
 - 쓰기 성능 저하. 삽입, 수정, 삭제할 떄 인덱스도 업데이트해야 하므로 성능이 저하함
 - 유지 관리 비용. 주기적을 재구성하거나 업데이트를 해야 함
-- 복잡성 증가. 인덱스 사용은 데이터베이스 설계의 복잡성을 증가 시킴 
+- 복잡성 증가. 인덱스 사용은 데이터베이스 설계의 복잡성을 증가 시킴
